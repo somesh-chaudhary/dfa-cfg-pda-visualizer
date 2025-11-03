@@ -227,14 +227,14 @@ def main():
 
 
     st.markdown(
-        """
-        <style>
-        /* Force white backgrounds for expander header/content and alerts */
-        summary,
-        [data-testid="stExpanderDetails"],
-        [data-testid="stAlertContainer"] {
-            background-color: #ffffff !important;
-        }
+         """
+         <style>
+         /* Force white backgrounds for expander header/content and alerts */
+         summary,
+         [data-testid="stExpanderDetails"],
+         [data-testid="stAlertContainer"] {
+             background-color: #ffffff !important;
+         }
 
         /* Code blocks: make background white and text dark */
         [data-testid="stCodeBlock"],
@@ -283,17 +283,27 @@ def main():
             background-color: #ffffff !important;
         }
 
-        /* Force white background for expander content */
-        div[data-testid="stExpanderDetails"],
-        .st-emotion-cache-1lks9j9 {
-            background-color: #ffffff !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+         /* Force white background for expander content */
+         div[data-testid="stExpanderDetails"],
+         .st-emotion-cache-1lks9j9 {
+             background-color: #ffffff !important;
+         }
+         
+         /* Buttons: ensure white background but keep page containers untouched */
+         button[data-testid="stBaseButton-secondary"],
+         button[data-testid="stBaseButton-primary"] {
+             background-color: #ffffff !important;
+             color: #111111 !important;
+         }
+         </style>
+         """,
+         unsafe_allow_html=True,
+     )
 
 
 if __name__ == "__main__":
     main()
+
+
+
 
