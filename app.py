@@ -295,6 +295,16 @@ def main():
              background-color: #ffffff !important;
              color: #111111 !important;
          }
+
+         /* Additional selectbox wrappers (chevron container) from DOM snippet */
+         .st-ak.st-al.st-as.st-cm.st-bg.st-cn.st-bl {
+             background-color: #ffffff !important;
+         }
+
+         /* Select label text: keep dark for readability */
+         .st-bm.st-ak.st-bn.st-bo.st-bp.st-ar.st-bq.st-br.st-bs {
+             color: #111111 !important;
+         }
          </style>
          """,
          unsafe_allow_html=True,
@@ -303,6 +313,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
 
