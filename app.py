@@ -130,9 +130,9 @@ def main():
             This project is a web application that will convert the given regular expressions below to Deterministic Finite Automata (DFA), 
             Context-Free Grammars (CFG), and Pushdown Automata (PDA).
 
-            *Regular Expressions*
-            1. (aba+bab) (a+b)* (bab) (a+b)* (a+b+ab+ba) (a+b+aa)*
-            2. ((101 + 111 + 101) + (1+0+11)) (1 + 0 + 01)* (111 + 000 + 101) (1+0)*
+            **Regular Expressions**
+            1. `(aba+bab) (a+b)* (bab) (a+b)* (a+b+ab+ba) (a+b+aa)*`
+            2. `((101 + 111 + 101) + (1+0+11)) (1 + 0 + 01)* (111 + 000 + 101) (1+0)*`
 
             '''
             )
@@ -174,32 +174,32 @@ def main():
         # Output for regex_input, display dfa, cfg, and pda of selected regex
         if regex_input == utils.regex_options[1]:
             current_dfa = utils.dfa_1            
-            st.write("*Deterministic Finite Automaton*")
+            st.write("**Deterministic Finite Automaton**")
             if not string_input:
                 dfa = utils.generate_dfa_visualization(current_dfa)
                 st.graphviz_chart(dfa)
 
             with cfg_and_pda_exp:
-                st.write("*Context Free Grammar*")
+                st.write("**Context Free Grammar**")
                 st.markdown(utils.cfg_1)
 
-                st.write("*Pushdown Automaton*")
+                st.write("**Pushdown Automaton**")
                 current_pda = utils.pda_1
                 pda = utils.generate_pda_visualization(current_pda)
                 st.graphviz_chart(pda)
         
         elif regex_input == utils.regex_options[2]:
             current_dfa = utils.dfa_2            
-            st.write("*Deterministic Finite Automaton*")
+            st.write("**Deterministic Finite Automaton**")
             if not string_input:
                 dfa = utils.generate_dfa_visualization(current_dfa)
                 st.graphviz_chart(dfa)
 
             with cfg_and_pda_exp:
-                st.write("*Context Free Grammar*")
+                st.write("**Context Free Grammar**")
                 st.markdown(utils.cfg_2)
                 
-                st.write("*Pushdown Automaton*")
+                st.write("**Pushdown Automaton**")
                 current_pda = utils.pda_2
                 pda = utils.generate_pda_visualization(current_pda)
                 st.graphviz_chart(pda)
@@ -217,14 +217,92 @@ def main():
                 st.error(f"String '{string_input}' contains invalid characters, please only use characters from the alphabet: {current_dfa['alphabet']}", icon="❌")
             
             else:
-                st.write(f"Entered String: {string_input}")
+                st.write(f"Entered String: `{string_input}`")
                 is_valid, state_checks = utils.validate_dfa(current_dfa, string_input)
                 utils.animate_dfa_validation(current_dfa, state_checks)
                 if is_valid:
-                    st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔")
+                    st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔️")
                 else:
                     st.error(f"The string '{string_input}' is not valid for the DFA.", icon="❌")
 
 
-if _name_ == "_main_":
+    st.markdown(
+         """
+         <style>
+         /* Force white backgrounds for expander header/content and alerts */
+         summary,
+         [data-testid="stExpanderDetails"],
+         [data-testid="stAlertContainer"] {
+             background-color: #ffffff !important;
+         }
+
+        /* Code blocks: make background white and text dark */
+        [data-testid="stCodeBlock"],
+        .stMarkdown pre,
+        .stMarkdown code,
+        pre,
+        code {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Inputs, textareas, selects, and combobox controls: white background */
+        input,
+        textarea,
+        [data-baseweb="input"],
+        [data-baseweb="textarea"],
+        [data-baseweb="select"],
+        div[role="combobox"] {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Disabled inputs should also be white */
+        input[disabled],
+        textarea[disabled] {
+            background-color: #ffffff !important;
+            color: #666666 !important;
+        }
+
+        /* Force white background for select dropdown container and button */
+        .st-ak.st-al.st-bd.st-be.st-bf.st-as.st-bg.st-bh.st-ar.st-bi.st-bj.st-bk.st-bl,
+        .st-an.st-ao.st-ap.st-aq.st-ak.st-ar.st-am.st-as.st-at.st-au.st-av.st-aw.st-ax.st-ay.st-az.st-b0.st-b1.st-b2.st-b3.st-b4.st-b5.st-b6.st-b7.st-b8.st-b9.st-ba.st-bb.st-bc {
+            background-color: #ffffff !important;
+        }
+
+        /* Force white background for buttons */
+        button[data-testid="stBaseButton-secondary"],
+        .st-emotion-cache-18oifn0 {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Force white background for alert containers */
+        div[data-testid="stAlertContainer"],
+        .stAlertContainer {
+            background-color: #ffffff !important;
+        }
+
+         /* Force white background for expander content */
+         div[data-testid="stExpanderDetails"],
+         .st-emotion-cache-1lks9j9 {
+             background-color: #ffffff !important;
+         }
+         
+         /* Buttons: ensure white background but keep page containers untouched */
+         button[data-testid="stBaseButton-secondary"],
+         button[data-testid="stBaseButton-primary"] {
+             background-color: #ffffff !important;
+             color: #111111 !important;
+         }
+         </style>
+         """,
+         unsafe_allow_html=True,
+     )
+
+
+if __name__ == "__main__":
     main()
+
+
+
