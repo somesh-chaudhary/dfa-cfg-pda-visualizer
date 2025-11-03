@@ -263,6 +263,31 @@ def main():
             background-color: #ffffff !important;
             color: #666666 !important;
         }
+
+        /* Force white background for select dropdown container and button */
+        .st-ak.st-al.st-bd.st-be.st-bf.st-as.st-bg.st-bh.st-ar.st-bi.st-bj.st-bk.st-bl,
+        .st-an.st-ao.st-ap.st-aq.st-ak.st-ar.st-am.st-as.st-at.st-au.st-av.st-aw.st-ax.st-ay.st-az.st-b0.st-b1.st-b2.st-b3.st-b4.st-b5.st-b6.st-b7.st-b8.st-b9.st-ba.st-bb.st-bc {
+            background-color: #ffffff !important;
+        }
+
+        /* Force white background for buttons */
+        button[data-testid="stBaseButton-secondary"],
+        .st-emotion-cache-18oifn0 {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Force white background for alert containers */
+        div[data-testid="stAlertContainer"],
+        .stAlertContainer {
+            background-color: #ffffff !important;
+        }
+
+        /* Force white background for expander content */
+        div[data-testid="stExpanderDetails"],
+        .st-emotion-cache-1lks9j9 {
+            background-color: #ffffff !important;
+        }
         </style>
         """,
         unsafe_allow_html=True,
@@ -271,3 +296,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
