@@ -226,5 +226,48 @@ def main():
                     st.error(f"The string '{string_input}' is not valid for the DFA.", icon="❌")
 
 
+    st.markdown(
+        """
+        <style>
+        /* Force white backgrounds for expander header/content and alerts */
+        summary,
+        [data-testid="stExpanderDetails"],
+        [data-testid="stAlertContainer"] {
+            background-color: #ffffff !important;
+        }
+
+        /* Code blocks: make background white and text dark */
+        [data-testid="stCodeBlock"],
+        .stMarkdown pre,
+        .stMarkdown code,
+        pre,
+        code {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Inputs, textareas, selects, and combobox controls: white background */
+        input,
+        textarea,
+        [data-baseweb="input"],
+        [data-baseweb="textarea"],
+        [data-baseweb="select"],
+        div[role="combobox"] {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Disabled inputs should also be white */
+        input[disabled],
+        textarea[disabled] {
+            background-color: #ffffff !important;
+            color: #666666 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 if __name__ == "__main__":
     main()
