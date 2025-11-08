@@ -303,10 +303,24 @@ def main():
             background-color: #ffffff !important;
         }
 
+        /* Alert container text should be dark */
+        div[data-testid="stAlertContainer"] *,
+        div[data-testid="stAlert"] * {
+            color: #111111 !important;
+        }
+
          /* Force white background for expander content */
          div[data-testid="stExpanderDetails"],
          .st-emotion-cache-1lks9j9 {
              background-color: #ffffff !important;
+         }
+
+         /* Expander content text should be dark */
+         div[data-testid="stExpanderDetails"] *,
+         [data-testid="stExpanderDetails"] p,
+         [data-testid="stExpanderDetails"] code,
+         [data-testid="stExpanderDetails"] pre {
+             color: #111111 !important;
          }
          
          /* Buttons: ensure white background but keep page containers untouched */
@@ -321,9 +335,13 @@ def main():
          button[data-testid="stBaseButton-primary"] p,
          button[data-testid="stBaseButton-secondary"] span,
          button[data-testid="stBaseButton-primary"] span,
+         button[data-testid="stBaseButton-secondary"] div,
+         button[data-testid="stBaseButton-primary"] div,
          button p,
-         button span {
+         button span,
+         button div {
              color: #111111 !important;
+             font-weight: 700 !important;
          }
 
          /* Additional selectbox wrappers (chevron container) */
@@ -352,5 +370,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
