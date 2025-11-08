@@ -309,8 +309,15 @@ def main():
 
          /* Select dropdown menu items */
          [role="listbox"],
+         [role="listbox"] li,
          [role="option"] {
              background-color: #ffffff !important;
+             color: #111111 !important;
+         }
+
+         /* Dropdown option text */
+         [role="option"] span,
+         [role="option"] div {
              color: #111111 !important;
          }
          </style>
