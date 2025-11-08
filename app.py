@@ -172,6 +172,7 @@ def main():
         )
         
         # Output for regex_input, display dfa, cfg, and pda of selected regex
+        current_dfa = None  # Initialize to avoid unbound variable error
         if regex_input == utils.regex_options[1]:
             current_dfa = utils.dfa_1            
             st.write("**Deterministic Finite Automaton**")
@@ -206,24 +207,28 @@ def main():
 
         # Output for string_input, play validation animation on displayed dfa
         if validate_button or string_input:
-            string_input = string_input.replace(" ", "")  # Removes any whitespaces
-
-            # Check if string_input is empty
-            if len(string_input) == 0:
-                st.error("Empty/Invalid Input", icon="❌")
-            
-            # Check if string_input has characters not in the alphabet of selected regex
-            elif not all(char in current_dfa["alphabet"] for char in string_input):
-                st.error(f"String '{string_input}' contains invalid characters, please only use characters from the alphabet: {current_dfa['alphabet']}", icon="❌")
-            
+            # Ensure current_dfa is defined before proceeding
+            if current_dfa is None:
+                st.error("Please select a regular expression first.", icon="❌")
             else:
-                st.write(f"Entered String: `{string_input}`")
-                is_valid, state_checks = utils.validate_dfa(current_dfa, string_input)
-                utils.animate_dfa_validation(current_dfa, state_checks)
-                if is_valid:
-                    st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔️")
+                string_input = string_input.replace(" ", "")  # Removes any whitespaces
+
+                # Check if string_input is empty
+                if len(string_input) == 0:
+                    st.error("Empty/Invalid Input", icon="❌")
+                
+                # Check if string_input has characters not in the alphabet of selected regex
+                elif not all(char in current_dfa["alphabet"] for char in string_input):
+                    st.error(f"String '{string_input}' contains invalid characters, please only use characters from the alphabet: {current_dfa['alphabet']}", icon="❌")
+                
                 else:
-                    st.error(f"The string '{string_input}' is not valid for the DFA.", icon="❌")
+                    st.write(f"Entered String: `{string_input}`")
+                    is_valid, state_checks = utils.validate_dfa(current_dfa, string_input)
+                    utils.animate_dfa_validation(current_dfa, state_checks)
+                    if is_valid:
+                        st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔️")
+                    else:
+                        st.error(f"The string '{string_input}' is not valid for the DFA.", icon="❌")
 
 
     st.markdown(
@@ -313,9 +318,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
 
 
