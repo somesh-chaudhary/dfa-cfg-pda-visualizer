@@ -280,6 +280,14 @@ def main():
         [data-baseweb="select"] [role="button"],
         [data-baseweb="popover"] {
             background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+
+        /* Force black text in select box display value */
+        [data-baseweb="select"] [role="button"] *,
+        [data-baseweb="select"] span,
+        [data-baseweb="select"] div {
+            color: #111111 !important;
         }
 
         /* Force white background for buttons */
