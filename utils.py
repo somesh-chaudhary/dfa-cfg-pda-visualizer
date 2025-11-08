@@ -216,7 +216,8 @@ def validate_dfa(dfa, string):
             current_state = dfa["transitions"][transition]
         # Return False if current character in the string is not in the dfa transitions
         else:
-            return False
+            state_checks.append((current_state, False))
+            return (False, state_checks)
     
     # Add state check for last transition
     if current_state in dfa["end_states"]:
