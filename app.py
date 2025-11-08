@@ -270,8 +270,9 @@ def main():
         }
 
         /* Force white background for select dropdown container and button */
-        .st-ak.st-al.st-bd.st-be.st-bf.st-as.st-bg.st-bh.st-ar.st-bi.st-bj.st-bk.st-bl,
-        .st-an.st-ao.st-ap.st-aq.st-ak.st-ar.st-am.st-as.st-at.st-au.st-av.st-aw.st-ax.st-ay.st-az.st-b0.st-b1.st-b2.st-b3.st-b4.st-b5.st-b6.st-b7.st-b8.st-b9.st-ba.st-bb.st-bc {
+        [data-baseweb="select"] > div,
+        [data-baseweb="select"] [role="button"],
+        [data-baseweb="popover"] {
             background-color: #ffffff !important;
         }
 
@@ -301,13 +302,15 @@ def main():
              color: #111111 !important;
          }
 
-         /* Additional selectbox wrappers (chevron container) from DOM snippet */
-         .st-ak.st-al.st-as.st-cm.st-bg.st-cn.st-bl {
-             background-color: #ffffff !important;
+         /* Additional selectbox wrappers (chevron container) */
+         [data-baseweb="select"] svg {
+             color: #111111 !important;
          }
 
-         /* Select label text: keep dark for readability */
-         .st-bm.st-ak.st-bn.st-bo.st-bp.st-ar.st-bq.st-br.st-bs {
+         /* Select dropdown menu items */
+         [role="listbox"],
+         [role="option"] {
+             background-color: #ffffff !important;
              color: #111111 !important;
          }
          </style>
