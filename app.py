@@ -316,6 +316,16 @@ def main():
              color: #111111 !important;
          }
 
+         /* Force button text to be black */
+         button[data-testid="stBaseButton-secondary"] p,
+         button[data-testid="stBaseButton-primary"] p,
+         button[data-testid="stBaseButton-secondary"] span,
+         button[data-testid="stBaseButton-primary"] span,
+         button p,
+         button span {
+             color: #111111 !important;
+         }
+
          /* Additional selectbox wrappers (chevron container) */
          [data-baseweb="select"] svg {
              color: #111111 !important;
