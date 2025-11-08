@@ -130,9 +130,9 @@ def main():
             This project is a web application that will convert the given regular expressions below to Deterministic Finite Automata (DFA), 
             Context-Free Grammars (CFG), and Pushdown Automata (PDA).
 
-            *Regular Expressions*
-            1. (aba+bab) (a+b)* (bab) (a+b)* (a+b+ab+ba) (a+b+aa)*
-            2. ((101 + 111 + 101) + (1+0+11)) (1 + 0 + 01)* (111 + 000 + 101) (1+0)*
+            **Regular Expressions**
+            1. `(aba+bab) (a+b)* (bab) (a+b)* (a+b+ab+ba) (a+b+aa)*`
+            2. `((101 + 111 + 101) + (1+0+11)) (1 + 0 + 01)* (111 + 000 + 101) (1+0)*`
 
             '''
             )
@@ -175,32 +175,32 @@ def main():
         current_dfa = None  # Initialize to avoid unbound variable error
         if regex_input == utils.regex_options[1]:
             current_dfa = utils.dfa_1            
-            st.write("*Deterministic Finite Automaton*")
+            st.write("**Deterministic Finite Automaton**")
             if not string_input:
                 dfa = utils.generate_dfa_visualization(current_dfa)
                 st.graphviz_chart(dfa)
 
             with cfg_and_pda_exp:
-                st.write("*Context Free Grammar*")
+                st.write("**Context Free Grammar**")
                 st.markdown(utils.cfg_1)
 
-                st.write("*Pushdown Automaton*")
+                st.write("**Pushdown Automaton**")
                 current_pda = utils.pda_1
                 pda = utils.generate_pda_visualization(current_pda)
                 st.graphviz_chart(pda)
         
         elif regex_input == utils.regex_options[2]:
             current_dfa = utils.dfa_2            
-            st.write("*Deterministic Finite Automaton*")
+            st.write("**Deterministic Finite Automaton**")
             if not string_input:
                 dfa = utils.generate_dfa_visualization(current_dfa)
                 st.graphviz_chart(dfa)
 
             with cfg_and_pda_exp:
-                st.write("*Context Free Grammar*")
+                st.write("**Context Free Grammar**")
                 st.markdown(utils.cfg_2)
                 
-                st.write("*Pushdown Automaton*")
+                st.write("**Pushdown Automaton**")
                 current_pda = utils.pda_2
                 pda = utils.generate_pda_visualization(current_pda)
                 st.graphviz_chart(pda)
@@ -222,11 +222,11 @@ def main():
                     st.error(f"String '{string_input}' contains invalid characters, please only use characters from the alphabet: {current_dfa['alphabet']}", icon="❌")
                 
                 else:
-                    st.write(f"Entered String: {string_input}")
+                    st.write(f"Entered String: `{string_input}`")
                     is_valid, state_checks = utils.validate_dfa(current_dfa, string_input)
                     utils.animate_dfa_validation(current_dfa, state_checks)
                     if is_valid:
-                        st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔")
+                        st.success(f"The string '{string_input}' is valid for the DFA.", icon="✔️")
                     else:
                         st.error(f"The string '{string_input}' is not valid for the DFA.", icon="❌")
 
@@ -303,10 +303,24 @@ def main():
             background-color: #ffffff !important;
         }
 
+        /* Alert container text should be dark */
+        div[data-testid="stAlertContainer"] *,
+        div[data-testid="stAlert"] * {
+            color: #111111 !important;
+        }
+
          /* Force white background for expander content */
          div[data-testid="stExpanderDetails"],
          .st-emotion-cache-1lks9j9 {
              background-color: #ffffff !important;
+         }
+
+         /* Expander content text should be dark */
+         div[data-testid="stExpanderDetails"] *,
+         [data-testid="stExpanderDetails"] p,
+         [data-testid="stExpanderDetails"] code,
+         [data-testid="stExpanderDetails"] pre {
+             color: #111111 !important;
          }
          
          /* Buttons: ensure white background but keep page containers untouched */
@@ -321,9 +335,13 @@ def main():
          button[data-testid="stBaseButton-primary"] p,
          button[data-testid="stBaseButton-secondary"] span,
          button[data-testid="stBaseButton-primary"] span,
+         button[data-testid="stBaseButton-secondary"] div,
+         button[data-testid="stBaseButton-primary"] div,
          button p,
-         button span {
+         button span,
+         button div {
              color: #111111 !important;
+             font-weight: 700 !important;
          }
 
          /* Additional selectbox wrappers (chevron container) */
@@ -350,5 +368,7 @@ def main():
      )
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
+
+
