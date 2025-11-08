@@ -262,6 +262,12 @@ def main():
             color: #111111 !important;
         }
 
+        /* Select box selected value text */
+        [data-baseweb="select"] input,
+        [data-baseweb="select"] [role="button"] {
+            color: #111111 !important;
+        }
+
         /* Disabled inputs should also be white */
         input[disabled],
         textarea[disabled] {
