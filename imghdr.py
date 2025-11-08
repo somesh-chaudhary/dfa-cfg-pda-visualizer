@@ -53,3 +53,5 @@ def what(file: Union[str, bytes], h: Optional[bytes] = None) -> Optional[str]:
 
     return None
 
+
+
